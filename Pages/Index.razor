@@ -1,0 +1,505 @@
+﻿@page "/"
+@inherits LayoutComponentBase
+@using BlazorTypewriter;
+@inject ModalService _modalService
+
+<link href="_content/BlazorTypewriter/styles.css" rel="stylesheet" />
+<section class="module parallax parallax-1">
+    <div class="container">
+        <p class="l1">About Me</p>
+        <div class="l2">
+            Whenever I start working on a project, I always tend to be passionate, dedicated and diligent.
+            Looking to use my coding and programming skills as efficiently as possible. I consistently look
+            for an opportunity to hone my skills.
+        </div>
+    </div>
+
+</section>
+
+<section class="module parallax parallax-2">
+    <div class="container">
+        <p class="l1"><Typewriter Builder="@typewriter" /></p>
+        @*        <div style="display: flex; flex-direction: row;">
+
+            </div>*@
+        <div class="commmands">
+            <p style="font-family:FiraMono; color: green">BAHAA@my-os:<span style="color:blue">~</span><span style="color:white">$<per> cd MyProjects</per></span></p>
+            <p style="font-family:FiraMono; color: green">BAHAA@my-os:<span style="color:blue">~</span><span style="color:white">$<per> ls</per></span></p>
+
+            <div class="OS">
+                <a @onclick="args => Info1(1)"><p>&quot;Floppy-Cloud&quot;</p></a> <a @onclick="args => Info1(3)"><p>&quot;Blazor WebAssembly&quot;</p></a> <a @onclick="args => Info1(2)"><p>&quot;DATABASE&quot;</p></a>    <a @onclick="args => Info1(4)"><p>&quot;Cryptography-project&quot;</p></a>  <a @onclick="args => Info1(5)"><p>&quot;Machine learning project&quot;</p></a> <a @onclick="args => Info1(6)"><p>&quot;Management System&quot;</p></a><a @onclick="args => Info1(7)"><p>&quot;Selenium&quot;</p></a>
+            </div>
+
+            <p style="font-family:FiraMono; color: green">BAHAA@my-os:<span style="color:blue">~</span><span style="color:white">$</span><Typewriter Builder="@typewriter2" /></p>
+        </div>
+
+        @{RenderFragment footer = @<Template>
+                <AntDesign.Button OnClick="@HandleCancel" @key="@( "back" )">Return</AntDesign.Button>
+            </Template>;}
+    <AntDesign.Modal Style="color:snow" Title="@(title)"
+                     Visible="@_visible1"
+                     OnOk="(e)=>{_visible1 = false;}"
+                     Draggable="@(true)"
+                     OnCancel="(e)=>{_visible1 = false;}"
+                     Footer="@footer"
+                     CloseIcon="closeimg">
+        @if (title == "Floppy-Cloud")
+        {
+            <div style="float:left"><img class="card-image" src="/images/floppy.png" /></div>
+            <p class="cards-content">
+                Graduation project :
+                A backup with file prioritization for cloud backup with limited upload connections.
+            </p>
+            
+            <p>
+                Used: Python,Apache CouchDB.
+            </p>
+        }
+        else if (title == "Database project")
+        {
+            <div style="float:left"><img class="card-image" src="/images/lib.png" /></div>
+            <p class="cards-content">
+                Database project for Nablus Public Library.
+            </p>
+            
+            <p>
+                Used: MYSQL
+            </p>
+        }
+        else if (title == "Blazor WebAssembly")
+        {
+            <div style="float:left"><img class="card-image" src="/images/programing_mid.gif" /></div>
+
+            <p class="cards-content">
+                This website made with love and passionate using .net-blazor.
+            </p>
+            
+            <p>
+                Used: BLAZOR/C#  /HTML/CSS
+            </p>
+        }
+        else if (title == "Machine learning project")
+        {
+            <div style="float:left"><img class="card-image" src="/images/machine.jpg" /></div>
+            <p class="cards-content">
+                Predicting the Attrition of an employee worked in a company.
+            </p>
+            
+            <p>
+                Used: Python
+            </p>
+        }
+        else if (title == "Cryptography project")
+        {
+            <div style="float: left;">
+            <img class="card-image" src="/images/crypto.jpg" />
+            <img class="card-image" src="/images/lock.gif" style="position:absolute;left:10px;top:1px; pointer-events:none;" />
+            </div>
+            <p class="cards-content">
+                A full encryption and decryption python program with Multithreaded
+                Ciphers and brute force the encrypted data.
+            </p>
+            
+            <p>
+                Used: Python
+            </p>
+            }
+        else if (title == "Restaurant management system")
+        {
+            <div style="float: left"><img class="card-image" src="/images/90s.png" /></div>
+            <p class="cards-content">
+                Designed a web application for restaurant management system.
+            </p>
+            
+            <p>
+                Used: PHP/ HTML/CSS/JAVASCRIPT
+            </p>
+        }
+        else if (title == "Selenium")
+        {
+            <div style="float: left"><img class="card-image" src="/images/crypto.jpg" /></div>
+            <p class="cards-content">
+                I used selenium framework in web automation and scraping data from websites.
+            </p>
+            
+            <p>
+                Used: Python
+            </p>
+        }
+
+    </AntDesign.Modal>
+    </div>
+
+</section>
+
+<section class="module parallax parallax-3">
+    <div class="container">
+
+        <div id="card" class="flip-card" tabIndex="0" style="margin-top:20px">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                </div>
+
+                <div class="flip-card-back">
+                    <div style="width:100%; margin:50px">
+                        <h4 style="color: snow; user-select: none;">BAHAA TUFFAHA</h4>
+                    </div>
+                    <div style="width:100%">
+                        <span class="infos">EMAIL: bahaa.tuffaha@yahoo.com</span>
+                    </div>
+                    <a href="mailto:bahaa.tuffaha@yahoo.com">
+                        <AntDesign.Button Type="@AntDesign.ButtonType.Primary"
+                                Loading="_noIconLoading"
+                                Color="AntDesign.Color.Gold3"
+                                Icon="Send"
+                                OnClick="EnterNoIconLoading">
+                            Contact Me
+                        </AntDesign.Button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+    section.module.parallax {
+        height: 600px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    section.module.parallax-1 {
+        background-image: url("/images/me3.png");
+        /*background-position: top;*/
+        /*background-position-x: -60px;*/
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+
+    section.module.parallax-2 {
+        background-image: url("/images/me.gif");
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+
+    section.module.parallax-3 {
+        background-image: url("/images/me4_22.png");
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+    .container {
+        overflow-wrap: break-word;
+    }
+    .OS {
+        font-family: FiraMono;
+        color: #3464A2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        user-select: none;
+    }
+        .OS p {
+           font-size:13px;
+        }
+
+    .l1 {
+        font-size: 70px;
+        font-family: jd_code;
+        color: #2673dc;
+        user-select: none;
+    }
+
+    .l2 {
+        width: 80%;
+        font-size: 5vmin;
+        text-justify: auto;
+        font-family: TitilliumWeb;
+        color: whitesmoke;
+        text-align: justify;
+        user-select: none;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    @*cardsStyle*@
+    .card-image {
+       width: 30%;
+       border-radius: 15px 50px;
+       padding-bottom:20px;
+
+    }
+
+    .card-image:hover {
+        filter: saturate(150%);
+    }
+    .card-image:active {
+        pointer-events: none;
+    }
+    .ant-modal-body {
+        background-color: #333333;
+        font-family: TitilliumWeb;
+    }
+    .ant-modal-header {
+        background-color: #363636;
+        border-bottom: 1px solid hsla(0, 0%, 0%, 0.5);
+    }
+    .ant-modal-title {
+        font-weight:800;
+        font-family: TitilliumWeb;
+        color: snow;
+        text-align:center;
+    }
+    .ant-modal-footer {
+        font-family: TitilliumWeb;
+        background-color: #333333;
+    }
+    .ant-btn ant-btn-default {
+        background-color: #95EBEC;
+    }
+    .ant-modal-content {
+        border-radius: 10px !important;
+    }
+    .cards-content {
+       @* margin-top:100px;*@
+    }
+    @*flipping infoCard 3rd parallex*@
+    .flip-card {
+        background-color: transparent;
+        width: 560px;
+        height: 400px;
+        perspective: 1000px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+        -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+        box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+    }
+
+    .flip-card:focus {
+        outline: 0;
+    }
+
+    .flip-card:hover .flip-card-inner,
+    .flip-card:active .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+
+    .flip-card-front {
+        background-image: url("/images/Card-Out.png");
+        background-repeat:no-repeat;
+        background-size:contain;
+        color: black;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flip-card-back {
+        background-image: url("/images/Card-In.png");
+        color: white;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: rotateY(180deg);
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .infos {
+        font-size: 15px;
+        font-weight: bold;
+        color: #fff;
+    }
+    img:active{
+        pointer-events: none;
+    }
+    @* Medium devices (tablets, 768px and up)*@
+    @@media (max-width: 1028px) {
+        .OS {
+            flex-direction: column;
+        }
+    }
+    @* Medium devices (tablets, 768px and up)*@
+    @@media (max-width: 1180px) {
+        section .module.parallax-1 {
+            background-image: url("/images/programing_mid.png");
+            @*            background-size: auto 600px;*@
+        }
+
+        section.module.parallax-2 {
+            background-image: url("/images/programing_mid.gif");
+            @*            background-size: auto 600px;*@
+        }
+
+        section.module.parallax-3 {
+            background-image: url("/images/programing_mid2.png");
+        }
+
+        .l1 {
+            font-size: 50px;
+        }
+        .l2 {
+            background-color: hsla(0, 0%, 0%, 0.5);
+            text-align: center;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 280px;
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .OS {
+            flex-direction: column;
+        }
+    }
+    @*Small devices (landscape phones, 576px and up)*@
+    @@media (max-width:500px) {
+        .l1 {
+            font-size: 35px;
+            text-align:center;
+
+        }
+        .l2 {
+            text-align: center;
+            width: auto;
+            background-color: hsla(0, 0%, 0%, 0.5);
+            text-align: center;
+        }
+        .container {
+        justify-content:center;
+        }
+        .section.module.parallax-3.container {
+        display:flex;
+        justify-content:center;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 280px;
+            height: 200px;
+            perspective: 1000px;
+        }
+        .OS {
+            flex-direction:column;
+        }
+    @@media (max-width:406px) {
+        .flip-card {
+            transform: scale(0.9);
+        }
+        .module parallax parallax-3.container {
+            padding-left: 0px;
+        }
+    }
+</style>
+
+@code{
+    //here cards windows
+    string title = "404 error";
+    bool _visible1 = false;
+    private void Info1(int card_num)
+    {
+        if (card_num == 1)
+        {
+            title = "Floppy-Cloud";
+        }
+        else if (card_num == 2)
+        {
+            title = "Database project";
+        }
+        else if (card_num == 3)
+        {
+            title = "Blazor WebAssembly";
+        }
+        else if (card_num == 4)
+        {
+            title = "Cryptography project";
+        }
+        else if (card_num == 5)
+        {
+            title = "Machine learning project";
+        }
+        else if (card_num == 6)
+        {
+            title = "Restaurant management system";
+        }
+        else if (card_num == 7)
+        {
+            title = "Selenium";
+        }
+
+        _visible1 = true;
+    }
+
+    private void HandleCancel(MouseEventArgs e)
+    {
+        _visible1 = false;
+    }
+    RenderFragment closeimg =@<img style="width: 20px;height:20px" src="/images/close.png" alt="close" />;
+    TypewriterBuilder typewriter = new TypewriterBuilder(defaultCharacterPause: 100)
+    .TypeString("BAHAA TUFFAHA")
+    .Pause(2000)
+    .DeleteAll()
+    .TypeString("DEVELOPER", 100)
+    .Pause(500)
+    .DeleteAll(30)
+    .TypeString("DESIGNER", 100)
+    .Pause(500)
+    .DeleteAll(20)
+    .Pause(500)
+    .Loop();
+
+    TypewriterBuilder typewriter2 = new TypewriterBuilder(defaultCharacterPause: 100);
+
+    //contact me button
+    private bool _noIconLoading;
+    private bool _withIconLoading;
+    private bool _onlyIconLoading;
+
+    private async Task EnterNoIconLoading()
+    {
+        _noIconLoading = true;
+        await Task.Delay(8000);
+        _noIconLoading = false;
+    }
+
+    private async Task EnterWithIconLoading()
+    {
+        _withIconLoading = true;
+        await Task.Delay(8000);
+        _withIconLoading = false;
+    }
+}

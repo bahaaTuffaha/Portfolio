@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/wwwroot/index.html"
+  status = 200

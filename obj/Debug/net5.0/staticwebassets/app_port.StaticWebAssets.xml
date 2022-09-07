@@ -1,0 +1,7 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\BAHAA\source\repos\app_port\app_port\bin\Debug\net5.0\wwwroot\" />
+  <ContentRoot BasePath="/" Path="C:\Users\BAHAA\source\repos\app_port\app_port\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/AntDesign" Path="C:\Users\BAHAA\.nuget\packages\antdesign\0.10.3.1\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/BlazorTypewriter" Path="C:\Users\BAHAA\.nuget\packages\blazortypewriter\1.1.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\BAHAA\.nuget\packages\mudblazor\5.2.4\build\..\staticwebassets\" />
+</StaticWebAssets>

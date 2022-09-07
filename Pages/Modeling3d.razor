@@ -1,0 +1,256 @@
+﻿@page "/3d"
+@using System.IO;
+@using System
+@using System.Net.Http;
+@using System.Collections.Generic;
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
+@{
+    List<gallery> collection = new List<gallery>();
+    //here add all images
+    collection.Add(new gallery("/images/stairs.jpg", "stairs - recreation in 3d", 400));
+    collection.Add(new gallery("/images/lurking_monster.png", "horor-house", 400));
+    collection.Add(new gallery("/images/corodor.jpg", "corodor", 400));
+    collection.Add(new gallery("/images/space_ship.jpg", "SpaceShip", 400));
+    collection.Add(new gallery("/images/spacev2.jpg", "space-ship/different angle", 400));
+    collection.Add(new gallery("/images/negative_space.png", "negative_space", 400));
+    collection.Add(new gallery("/images/ad.jpg", "project_for_colleage", 400));
+    collection.Add(new gallery("/images/vita.png", "vita_recreation", 400));
+    collection.Add(new gallery("/images/vase.jpg", "vase", 400));
+    collection.Add(new gallery("/images/cave.jpg", "cave", 400));
+    collection.Add(new gallery("/images/double_trouble.png", "double_trouble", 400));
+    collection.Add(new gallery("/images/ladybug.jpg", "ladybug", 400));
+    collection.Add(new gallery("/images/winter_is_hard.jpg", "winter_is_hard", 400));
+    collection.Add(new gallery("/images/summerColor.jpg", "SummerColor", 400));
+    collection.Add(new gallery("/images/Poster.png", "poster", 200));
+
+    int a = rnd.Next(15);
+    int b = rnd.Next(15);
+    int c = rnd.Next(15);
+    while (a == b || b == c || c == a)
+    {
+        if (a == b)
+        {
+            a = rnd.Next(15);
+        }
+        if (b == c)
+        {
+            b = rnd.Next(15);
+        }
+        if (c == a)
+        {
+            c = rnd.Next(15);
+        }
+    }
+
+}
+
+<h1 class="title">GALLERY</h1>
+<div class="programs">
+    Programs used:
+    <MudGrid Spacing="@spacing" Justify="Justify.Center">
+        <MudItem>
+            <img height="140" width="140" src="/images/Photoshop.png"/>
+        </MudItem>
+        <MudItem>
+            <img height="140" width="140" src="/images/c4d.png" />
+        </MudItem>
+        <MudItem>
+            <img height="140" width="140" src="/images/AE.png" />
+        </MudItem>
+    </MudGrid>
+</div>
+<MudCarousel Style="height:400px;" ShowArrows="@arrows" ShowBullets="@bullets" AutoCycle="@autocycle" TData="object">
+    <MudCarouselItem Transition="transition">
+        <div class="d-flex" style="height: 100%;justify-content:center;">
+            <Image style="object-fit: cover;" Src=@collection[a].imageURL></Image>
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="transition">
+        <div class="d-flex" style="height: 100%; justify-content: center;">
+            <Image style="object-fit: cover;" Src=@collection[b].imageURL></Image>
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="transition">
+        <div class="d-flex" style="height: 100%; justify-content: center;">
+            <Image style="object-fit: cover;" Src=@collection[c].imageURL></Image>
+        </div>
+    </MudCarouselItem>
+</MudCarousel>
+
+<div id="gal">
+    <ImagePreviewGroup>
+        @foreach (var item in collection)
+        {
+            <Image class="fade-in" Src=@item.imageURL Alt=@item.imageALT />
+        }
+
+    </ImagePreviewGroup>
+</div>
+<a href="mailto:bahaa.tuffaha@yahoo.com">
+    <button id="contact-button">Contact me</button>
+    </a>
+
+
+    @code{
+        class gallery
+        {
+            public string imageURL { get; protected set; }
+            public string imageALT { get; protected set; }
+            public int imageWidth { get; protected set; }
+            public gallery(string url, string alt, int wd)
+            {
+                this.imageURL = url;
+                this.imageALT = alt;
+                this.imageWidth = wd;
+            }
+
+        }
+
+        private bool arrows = false;
+        private bool bullets = true;
+        private bool autocycle = true;
+        private Transition transition = Transition.Slide;
+        Random rnd = new Random();
+        public int spacing { get; set; } = 2;
+    }
+
+<style>
+        body {
+            text-align: center;
+        }
+
+        .fade-in {
+            animation: fadeIn ease 10s;
+            -webkit-animation: fadeIn ease 10s;
+            -moz-animation: fadeIn ease 10s;
+            -o-animation: fadeIn ease 10s;
+            -ms-animation: fadeIn ease 10s;
+            width: 40%;
+            height: auto;
+        }
+
+        @@keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @@-moz-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @@-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @@-o-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @@-ms-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .title {
+            font-size: 80px;
+            font-family: jd_code;
+            color: #2673dc;
+            text-align: center;
+            user-select: none;
+        }
+    .programs {
+        font-family: jd_code;
+        font-size: 40px;
+        padding-bottom: 30px;
+        color: #2673dc;
+        user-select: none;
+    }
+            .programs img:active {
+                pointer-events: none;
+            }
+            .programs img:hover {
+                animation-name: black_white;
+                animation-duration: 1000ms;
+                animation-fill-mode: forwards;
+            }
+    @@keyframes black_white {
+        100% {
+            filter: grayscale(100%);
+        }
+    }
+
+            .mud-carousel-swipe {
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+        .ant-layout-content {
+            text-align: center;
+        }
+
+        .ant-image-preview-img {
+            pointer-events: none;
+        }
+
+        #gal {
+            position: center;
+        }
+
+        .ant-image-mask {
+            object-fit: cover;
+        }
+
+        #contact-button {
+            color: white;
+            box-shadow: 2px 2px rgb(211 210 210 / 0.64);
+            background-color: #FCA311;
+            height: 50px;
+            width: 100px;
+            border-radius: 30px;
+            transform: scale(1.5);
+            margin: 20px;
+            font-family: TitilliumWeb;
+        }
+
+            #contact-button:hover {
+                animation-name: shadow-b;
+                animation-duration: 500ms;
+                animation-fill-mode: forwards;
+            }
+
+        @@keyframes shadow-b {
+            100% {
+                box-shadow: 5px 0px rgb(211 210 210 / 0.64);
+                transform: scale(1.6);
+            }
+        }
+</style>
